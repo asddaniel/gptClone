@@ -3,6 +3,7 @@ import { Tooltip, Drawer } from '@material-tailwind/react'
 import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
 import { Divider, Switch } from '@nextui-org/react';
 import MarkDownViewer from './components/MarkdownViewer';
+import useTypewriter from "react-typewriter-hook"
 
 const exempleMarkdown = `## Install
 
@@ -61,7 +62,13 @@ export default {
 function App() {
  const [toggleMenu, setToggleMenu] = useState(true);
  const [userRequest, setUserRequest] = useState("");
- 
+ const [loading, setloading] = useState(false);
+ const [iaresult, setiaResult] = useState("");
+ const writer = useTypewriter(iaresult)
+
+ const generate = ()=>{
+setiaResult(exempleMarkdown)
+ }
 
   return (
     <>
@@ -113,7 +120,7 @@ function App() {
                       </span>
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent>
+                  <PopoverContent className='dark:bg-neutral-800 dark:rounded-lg dark:border dark:border-neutral-700 rounded-lg'>
                     <div className="px-1 py-1 w-[22rem] dark:bg-neutral-800  dark:text-neutral-200">
                           <div className="text-small  w-full mb-1 font-bold  dark:hover:bg-neutral-700 hover:bg-neutral-100 cursor-pointer p-3 rounded-lg flex items-center  gap-2">
                               <span className='rounded-full p-2 bg-neutral-100  dark:bg-neutral-700 rounded'>
@@ -124,7 +131,7 @@ function App() {
                                 <span className="text-xs text-neutral-500">Our smartest model & more</span>
                                 
                               </div>
-                              <span className="p-2 py-1 rounded-2xl bg-white dark:bg-neutral-800  border ml-2">Upgrade</span>
+                              <span className="p-2 py-1 rounded-2xl bg-white dark:bg-neutral-800 dark:border-neutral-700  border ml-2">Upgrade</span>
                           </div>
 
                             <div className="text-small font-bold dark:hover:bg-neutral-700 hover:bg-neutral-100 cursor-pointer p-3 rounded-lg flex items-center   gap-2">
@@ -136,10 +143,10 @@ function App() {
                                 <span className="text-xs text-neutral-500">Great for everyday tasks</span>
                                 
                               </div>
-                              <span className="p-2 py-1  ml-2  w-16"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" fill="none" viewBox="0 0 24 24" className="icon-md"><path fill="currentColor" fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12m14.076-4.068a1 1 0 0 1 .242 1.393l-4.75 6.75a1 1 0 0 1-1.558.098l-2.5-2.75a1 1 0 0 1 1.48-1.346l1.66 1.827 4.032-5.73a1 1 0 0 1 1.394-.242" clip-rule="evenodd"></path></svg></span>
+                              <span className="p-2 py-1  ml-2  w-16 dark:text-black"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" fill="none" viewBox="0 0 24 24" className="icon-md"><path fill="currentColor" fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12m14.076-4.068a1 1 0 0 1 .242 1.393l-4.75 6.75a1 1 0 0 1-1.558.098l-2.5-2.75a1 1 0 0 1 1.48-1.346l1.66 1.827 4.032-5.73a1 1 0 0 1 1.394-.242" clip-rule="evenodd"></path></svg></span>
                             </div>
-                            <Divider></Divider>
-                            <div className="text-small mt-2 font-bold  dark:hover:bg-neutral-700 hover:bg-neutral-100 cursor-pointer p-2 rounded-lg flex items-center   gap-2">
+                            <Divider className='dark:bg-neutral-700'></Divider>
+                            <div className="text-small mt-2 font-bold   dark:hover:bg-neutral-700 hover:bg-neutral-100 cursor-pointer p-2 rounded-lg flex items-center   gap-2">
                               <span className='rounded-full p-2  rounded'>
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="h-5 w-5 shrink-0"><path fill="currentColor" fill-rule="evenodd" d="M10.974 3.252a1 1 0 0 1-.746 1.201 7.74 7.74 0 0 0-3.876 2.24 1 1 0 1 1-1.458-1.37 9.74 9.74 0 0 1 4.878-2.817 1 1 0 0 1 1.202.746m2.052 0a1 1 0 0 1 1.202-.746 9.74 9.74 0 0 1 4.878 2.818 1 1 0 1 1-1.458 1.37 7.74 7.74 0 0 0-3.876-2.24 1 1 0 0 1-.746-1.202M3.91 8.514a1 1 0 0 1 .67 1.246A7.8 7.8 0 0 0 4.25 12c0 .774.113 1.53.325 2.25a1 1 0 0 1-1.92.564A10 10 0 0 1 2.25 12c0-.978.144-1.924.413-2.817a1 1 0 0 1 1.246-.669m16.182 0a1 1 0 0 1 1.246.67c.269.892.413 1.838.413 2.816a10 10 0 0 1-.406 2.813 1 1 0 0 1-1.919-.564A8 8 0 0 0 19.75 12a7.8 7.8 0 0 0-.328-2.24 1 1 0 0 1 .669-1.246m-.982 8.768a1 1 0 0 1 .086 1.412c-1.293 1.462-3.006 2.551-4.955 3.033a1 1 0 1 1-.48-1.941c1.53-.379 2.895-1.24 3.938-2.418a1 1 0 0 1 1.411-.086m-12.937-.008a1 1 0 0 1 .293 1.384L5.593 20H10a1 1 0 1 1 0 2H3.75a1 1 0 0 1-.838-1.545l1.876-2.887a1 1 0 0 1 1.384-.294" clip-rule="evenodd"></path></svg>
                               </span>
@@ -158,10 +165,10 @@ function App() {
             </div>
             <div className={"col-span-8  p-6 h-full  absolute transition overflow-x-auto overflow-y-hidden  dark:bg-neutral-800 transition-all duration-500 h-full p-2  "+(toggleMenu ? "w-[77%] translate-x-[29%]" : "w-full")}>
                   
-                  <div className="w-full h-full p-2  flex justify-center max-h-screen overflow-y-auto">
-                     <MarkDownViewer content={exempleMarkdown}></MarkDownViewer>
+                  <div className="w-full h-full p-2  flex justify-center max-h-screen overflow-y-auto -translate-y-16">
+                     <MarkDownViewer content={writer}></MarkDownViewer>
                   </div>
-                  <div className="py-16"></div>
+                  <div className="py-24"></div>
                 <div className="w-full sticky bottom-0">
                 <div className='flex rounded-[5rem] p-1  bg-slate-100 dark:bg-neutral-700 bottom-0 fixed mb-8 w-[54rem] gap-2 justify-between px-2 items-center'>
                       <Popover placement="bottom" showArrow={true} color='default' className='p-0'>
@@ -170,9 +177,9 @@ function App() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9 7a5 5 0 0 1 10 0v8a7 7 0 1 1-14 0V9a1 1 0 0 1 2 0v6a5 5 0 0 0 10 0V7a3 3 0 1 0-6 0v8a1 1 0 1 0 2 0V9a1 1 0 1 1 2 0v6a3 3 0 1 1-6 0z" clip-rule="evenodd"></path></svg>
                             </span>
                           </PopoverTrigger>
-                          <PopoverContent>
-                            <div className="px-1 py-2 dark:bg-neutral-800">
-                            <div className="px-1 py-1 w-[20rem]">
+                          <PopoverContent className='dark:bg-neutral-800 dark:border dark:border-neutral-700'>
+                            <div className="px-0 py-2 dark:bg-neutral-800">
+                            <div className="px-0 py-1 w-[20rem]">
                                   <div className="text-small  w-full mb-1 font-bold hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer p-2 py-1 rounded-lg flex items-center  gap-2">
                                       <span className='rounded-full p-2  rounded'>
                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="h-5 w-5 shrink-0"><path fill="#0066DA" d="m3.511 18.427.882 1.535c.183.323.447.576.756.761l3.15-5.492H2c0 .357.092.715.275 1.038z"></path><path fill="#00AC47" d="M12 8.77 8.85 3.276c-.31.184-.574.438-.757.761L2.274 14.192c-.18.316-.275.674-.275 1.039h6.3z"></path><path fill="#EA4335" d="M18.85 20.723c.308-.185.572-.438.755-.761l.367-.635 1.752-3.058c.184-.323.275-.68.275-1.038h-6.3l1.34 2.654z"></path><path fill="#00832D" d="m11.998 8.77 3.15-5.493A2 2 0 0 0 14.118 3H9.878c-.367 0-.722.104-1.03.277z"></path><path fill="#2684FC" d="M15.698 15.23h-7.4l-3.15 5.493c.31.185.665.277 1.031.277h11.638a2.1 2.1 0 0 0 1.031-.277z"></path><path fill="#FFBA00" d="m18.815 9.115-2.91-5.077a2.1 2.1 0 0 0-.756-.761L12 8.769l3.7 6.462h6.289c0-.358-.092-.716-.275-1.039z"></path></svg>
@@ -192,7 +199,7 @@ function App() {
                                       <div className="flex flex-col  font-normal w-full">
                                         
 
-                                        <Tooltip content={<div>Tooltip</div>}>
+                                        <Tooltip className="z-[9999]" content={<div>Tooltip</div>}>
                                         <span>Connect to Microsoft One Drive </span>
                                         </Tooltip>
                                       
@@ -200,7 +207,7 @@ function App() {
                                       </div>
                                       
                                     </div>
-                                    <Divider className='my-2 dark:border-neutral-400'></Divider>
+                                    <Divider className='my-2 dark:border-neutral-700 dark:bg-neutral-700 w-full'></Divider>
                                     <div className="text-small mt-2 font-bold hover:bg-neutral-100  dark:hover:bg-neutral-700 cursor-pointer p-1 rounded-lg flex items-center   gap-2">
                                       <span className='rounded-full p-2  rounded'>
                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="h-5 w-5 shrink-0"><path fill="currentColor" fill-rule="evenodd" d="M18.032 5.024C17.75 5 17.377 5 16.8 5h-5.3c-.2 1-.401 1.911-.61 2.854-.131.596-.247 1.119-.523 1.56a3 3 0 0 1-.953.954c-.441.275-.964.39-1.56.522l-.125.028-2.512.558A1 1 0 0 1 5 11.5v5.3c0 .577 0 .949.024 1.232.022.272.06.372.085.422a1 1 0 0 0 .437.437c.05.025.15.063.422.085C6.25 19 6.623 19 7.2 19H10a1 1 0 1 1 0 2H7.161c-.527 0-.981 0-1.356-.03-.395-.033-.789-.104-1.167-.297a3 3 0 0 1-1.311-1.311c-.193-.378-.264-.772-.296-1.167A18 18 0 0 1 3 16.838V11c0-2.075 1.028-4.067 2.48-5.52C6.933 4.028 8.925 3 11 3h5.839c.527 0 .982 0 1.356.03.395.033.789.104 1.167.297a3 3 0 0 1 1.311 1.311c.193.378.264.772.296 1.167.031.375.031.83.031 1.356V10a1 1 0 1 1-2 0V7.2c0-.577 0-.949-.024-1.232-.022-.272-.06-.373-.085-.422a1 1 0 0 0-.437-.437c-.05-.025-.15-.063-.422-.085M5.28 9.414l2.015-.448c.794-.177.948-.225 1.059-.294a1 1 0 0 0 .318-.318c.069-.11.117-.265.294-1.059l.447-2.015c-.903.313-1.778.874-2.518 1.615-.741.74-1.302 1.615-1.615 2.518M17 15a1 1 0 1 1 2 0v2h2a1 1 0 1 1 0 2h-2v2a1 1 0 1 1-2 0v-2h-2a1 1 0 1 1 0-2h2z" clip-rule="evenodd"></path></svg>
@@ -218,8 +225,10 @@ function App() {
                       </Popover>
 
                     <textarea value={userRequest} onInput={(e)=>setUserRequest((e.target as HTMLTextAreaElement).value)} className=" outline-none w-[85%] bg-transparent h-6" placeholder='Message ChatGPT'></textarea>
-                    <span className={"p-1 text-white font-bold  rounded-full "+(userRequest.length>0 ?" bg-neutral-900 dark:bg-neutral-300 cursor-pointer dark:hover:bg-neutral-200 dark:text-neutral-900 hover:bg-neutral-800":"bg-neutral-200 text-white dark:text-neutral-900 dark:bg-neutral-500")}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32" className="icon-2xl"><path fill="currentColor" fill-rule="evenodd" d="M15.192 8.906a1.143 1.143 0 0 1 1.616 0l5.143 5.143a1.143 1.143 0 0 1-1.616 1.616l-3.192-3.192v9.813a1.143 1.143 0 0 1-2.286 0v-9.813l-3.192 3.192a1.143 1.143 0 1 1-1.616-1.616z" clip-rule="evenodd"></path></svg>
+                    <span onClick={()=>generate()} className={"p-1 text-white font-bold  rounded-full aspect-square px-2 "+(userRequest.length>0 ?" bg-neutral-900 dark:bg-neutral-300 cursor-pointer dark:hover:bg-neutral-200 dark:text-neutral-900 hover:bg-neutral-800":"bg-neutral-200 text-white dark:text-neutral-900 dark:bg-neutral-500")}>
+                    {!loading ? <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32" className="icon-2xl"><path fill="currentColor" fill-rule="evenodd" d="M15.192 8.906a1.143 1.143 0 0 1 1.616 0l5.143 5.143a1.143 1.143 0 0 1-1.616 1.616l-3.192-3.192v9.813a1.143 1.143 0 0 1-2.286 0v-9.813l-3.192 3.192a1.143 1.143 0 1 1-1.616-1.616z" clip-rule="evenodd">
+                      </path>
+                    </svg>:<span className='p-1 bg-neutral-900 aspect-square h-3 w-3 inline-block'></span>}
                     </span>
                 </div>
                 </div>
