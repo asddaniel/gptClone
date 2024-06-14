@@ -20,9 +20,9 @@ export default {
       colors: {
         background: "#000000", // or DEFAULT
         foreground: "#ECEDEE", // or 50 to 900 DEFAULT
-        default: {
+        DEFAULT: {
           //... 50 to 900
-          foreground: "#FFFFFF",
+          foreground: "#262626",
           DEFAULT: "#006FEE",
         }
       },
