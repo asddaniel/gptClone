@@ -39,7 +39,7 @@ export default function MarkDownViewer ({children, content}:any){
         // Use a component instead of hrs
         code({ node, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '');
-            console.log(match, children)
+           // console.log(match, children)
            //console.log(inline)
             if(Array.isArray(children)){
                 for(const child of children){
@@ -47,7 +47,7 @@ export default function MarkDownViewer ({children, content}:any){
                 }
             }
             const codeString = renderToHTML(children);
-            console.log(codeString)
+          //  console.log(codeString)
             
             return  match ? (
               <CodeViewer  language={match[1]} codeString={codeString?.toString().replace(/\n$/, '')}  >
@@ -60,6 +60,6 @@ export default function MarkDownViewer ({children, content}:any){
             );
           }
       }}
-       className={"prose dark:prose-invert lang-js w-full"} rehypePlugins={[rehypeHighlight]}>{content}</Markdown>
+       className={"prose dark:prose-invert lang-js w-full overflow-y-auto "} rehypePlugins={[rehypeHighlight]}>{content}</Markdown>
     </div>
 }
