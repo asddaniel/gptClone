@@ -30,7 +30,7 @@ if(typeof element === 'string'){
 }
 
 export default function MarkDownViewer ({children, content}:any){
-  console.log(children)
+ // console.log(children)
     return <div className="prose dark:prose-invert w-full">
        <Markdown
        components={{

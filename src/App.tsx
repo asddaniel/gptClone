@@ -3,7 +3,7 @@ import { Tooltip, Drawer } from '@material-tailwind/react'
 import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
 import { Divider, Switch } from '@nextui-org/react';
 import MarkDownViewer from './components/MarkdownViewer';
-import useTypewriter from "react-typewriter-hook"
+// import useTypewriter from "react-typewriter-hook"
 
 const exempleMarkdown = `## Install
 
@@ -64,11 +64,23 @@ function App() {
  const [userRequest, setUserRequest] = useState("");
  const [loading, setloading] = useState(false);
  const [iaresult, setiaResult] = useState("");
- const writer = useTypewriter(iaresult)
+//  const writer = useTypewriter(iaresult)
+ let intervalref = null;
 
  const generate = ()=>{
-setiaResult(exempleMarkdown)
+//setiaResult(exempleMarkdown)
+let generated = ""
+for(let i=0; i<exempleMarkdown.length; i++){
+ 
+  //setiaResult(generated)
+        setTimeout(()=>{
+          setiaResult(generated)
+          generated += exempleMarkdown[i];
+          console.log(generated)
+        }, 100*(i/8));
+}
  }
+ 
 
   return (
     <>
@@ -166,7 +178,7 @@ setiaResult(exempleMarkdown)
             <div className={"col-span-8  p-6 h-full  absolute transition overflow-x-auto overflow-y-hidden  dark:bg-neutral-800 transition-all duration-500 h-full p-2  "+(toggleMenu ? "w-[77%] translate-x-[29%]" : "w-full")}>
                   
                   <div className="w-full h-full p-2  flex justify-center max-h-screen overflow-y-auto -translate-y-16">
-                     <MarkDownViewer content={writer}></MarkDownViewer>
+                     <MarkDownViewer content={iaresult}></MarkDownViewer>
                   </div>
                   <div className="py-24"></div>
                 <div className="w-full sticky bottom-0">
